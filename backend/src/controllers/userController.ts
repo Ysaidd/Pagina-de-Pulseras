@@ -13,8 +13,7 @@ export const createUser = async (req: Request, res: Response) =>{
             user: newUser,
         });
     }catch(error){
-        if(error !instanceof Error){
-           console.log(res.status(500).json({message: error.message}))
-        }
+        const errorMessage = error instanceof Error ? error.message : "Error message";
+        res.status(500).json({message: errorMessage});
     }
-}
+};

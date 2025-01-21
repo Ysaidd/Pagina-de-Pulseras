@@ -1,1 +1,1 @@
-export { default as User} from "./productos"
+export { default as User} from "./userRoutes"

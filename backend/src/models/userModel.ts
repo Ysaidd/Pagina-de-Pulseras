@@ -8,7 +8,7 @@ export interface IUser extends Document{
     createAt: Date;
 };
 
-const Userchema: Schema = new Schema({
+const UserSchema: Schema = new Schema({
     name: {type: String, required: true},
     email: {type: String, required: true},
     password: {type: String, required: true},
@@ -16,4 +16,4 @@ const Userchema: Schema = new Schema({
     createdAt: {type: Date, default: Date.now}
 });
 
-export default mongoose.model<IUser>("User", Userchema);
+export default mongoose.model<IUser>("User", UserSchema);

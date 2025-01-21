@@ -12,6 +12,7 @@ export const createUserService = async (name: string, email:string, password: st
         await newUser.save()
 
         return newUser
+        
     } catch (error:unknown) {
         if(error instanceof Error){
             throw new Error('Error al crear el usuario: ' + error.message);
