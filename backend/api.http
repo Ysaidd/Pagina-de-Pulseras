@@ -1,0 +1,9 @@
+###
+POST http://127.0.0.1:3000/users/create
+Content-Type: application/json
+
+{
+    "name": "wazaaasssultima",
+    "email": "pruebas",
+    "password": "durisimohermano"
+}
