@@ -3,7 +3,16 @@ POST http://127.0.0.1:3000/users/create
 Content-Type: application/json
 
 {
-    "name": "YOS",
+    "name": "YOS2",
     "email": "pruebas",
     "password": "durisimohermano"
+}
+###
+POST http://127.0.0.1:3000/product/create
+Content-Type: application/json
+
+{
+    "name": "doble",
+    "cantidad": 20,
+    "descripcion": "Pulsera de cuero bien mamada"
 }
