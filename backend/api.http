@@ -8,11 +8,11 @@ Content-Type: application/json
     "password": "durisimohermano"
 }
 ###
-POST http://127.0.0.1:3000/product/create
+POST http://127.0.0.1:3000/products/create
 Content-Type: application/json
 
 {
-    "name": "pruebawaza3",
+    "name": "pruebawaza4",
     "stock": 20,
     "price": 35,
     "description": "Pulsera de cuero bien mamada",
@@ -21,3 +21,6 @@ Content-Type: application/json
 
 ###
 GET http://127.0.0.1:3000/products
+
+###
+GET http://127.0.0.1:3000/products/6792605c67ea5a659861446d
