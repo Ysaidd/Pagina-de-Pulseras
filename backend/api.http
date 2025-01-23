@@ -19,8 +19,21 @@ Content-Type: application/json
     "category": "Pulsera"
 }
 
-###
+### OBTIENE LA LISTA DE LOS PRODUCTOS
 GET http://127.0.0.1:3000/products
 
-###
+
+### OBTIENE PRODUCTOS POR ID
 GET http://127.0.0.1:3000/products/6792605c67ea5a659861446d
+
+###
+PATCH http://127.0.0.1:3000/products/6792605c67ea5a659861446d
+Content-Type: application/json
+
+{
+    "name": "pruebawaza}}}adas4",
+    "stock": 80,
+    "price": 35,
+    "description": "Pulsera de cufasfsafasero bien mamada",
+    "category": "collar"
+}
