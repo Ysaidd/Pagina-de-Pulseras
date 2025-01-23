@@ -2,16 +2,21 @@ import mongoose, {Schema, Document} from "mongoose";
 
 export interface IProduct extends Document{
     name: string,
-    cantidad: number,
-    precio: number | 0,
-    descripcion: string
+    stock: number,
+    price: number | 0,
+    description: string,
+    category: string,
+    createAT: Date,
 };
 
 const ProductSchema: Schema = new Schema({
     name: {type: String, required: true},
-    cantidad: {type: Number, required: true},
-    precio: {type: Number, default: 0},
-    descripcion: {type: String, required: true}
+    stock: {type: Number, required: true},
+    price: {type: Number, default: 0},
+    description: {type: String, required: true},
+    category: {type: String, required: true},
+},{
+    timestamps: true,
 })
 
-export default mongoose.model<IProduct>("Producto", ProductSchema);
+export default mongoose.model<IProduct>("Product", ProductSchema);

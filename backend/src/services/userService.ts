@@ -21,3 +21,4 @@ export const createUserService = async (name: string, email:string, password: st
         }
     }
 };
+

@@ -12,7 +12,12 @@ POST http://127.0.0.1:3000/product/create
 Content-Type: application/json
 
 {
-    "name": "doble",
-    "cantidad": 20,
-    "descripcion": "Pulsera de cuero bien mamada"
+    "name": "pruebawaza3",
+    "stock": 20,
+    "price": 35,
+    "description": "Pulsera de cuero bien mamada",
+    "category": "Pulsera"
 }
+
+###
+GET http://127.0.0.1:3000/products
