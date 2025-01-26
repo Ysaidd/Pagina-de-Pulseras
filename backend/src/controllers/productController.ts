@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { createProduct, getProducts, getProductById, updateProduct, deleteProduct} from "../services/productService"
+import {createProduct, getProducts, getProductById, updateProduct, deleteProduct} from "../services/productService"
 
 export const createProductController = async (req: Request, res: Response) =>{
     try{
-        const {name, stock, price, description, category} = req.body
+        const {name, stock, price, description, category, descuento} = req.body
 
-        const newProduct = await createProduct(name, stock, price, description, category);
+        const newProduct = await createProduct(name, stock, price, description, category, descuento);
         res.status(201).json({
             message: "Producto creado correctamente",
             product: newProduct
@@ -41,15 +41,28 @@ export const getProductByIdController = async (req: Request, res: Response) =>{
     }
 }
 
-export const updateProductController = async(req: Request, res: Response) =>{
+export const updateProductController = async (req: Request, res: Response) =>{
     try{
         const product = await updateProduct(req.params.id, req.body)
         
-        res.status(200).json({
-            product: product
-        })
+        res.status(200).json(
+            product
+        )
     }catch(error){
         const errorMessage = error instanceof Error ? error.message : "Error al actualizar el producto";
+        res.status(500).json({message: errorMessage});
+    }
+}
+
+export const deleteProductController = async(req: Request, res: Response) =>{
+    try{
+        const product = await deleteProduct(req.params.id);
+
+        res.status(200).json({
+            message: `Producto eliminado correctamente`
+        })
+    }catch(error){
+        const errorMessage = error instanceof Error ? error.message : "Error al eliminar el producto";
         res.status(500).json({message: errorMessage});
     }
 }

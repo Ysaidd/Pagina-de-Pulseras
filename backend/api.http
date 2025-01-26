@@ -12,15 +12,31 @@ POST http://127.0.0.1:3000/products/create
 Content-Type: application/json
 
 {
-    "name": "pruebawaza4",
+    "name": "pruebawazassss105",
     "stock": 20,
     "price": 35,
     "description": "Pulsera de cuero bien mamada",
-    "category": "Pulsera"
+    "category": "pulsera"
 }
 
-###
+### OBTIENE LA LISTA DE LOS PRODUCTOS
 GET http://127.0.0.1:3000/products
 
-###
-GET http://127.0.0.1:3000/products/6792605c67ea5a659861446d
+
+### OBTIENE PRODUCTOS POR ID
+GET http://127.0.0.1:3000/products/6795700003c2f4580e8cc68f
+
+### ACTUALIZA UN PRODUCTO
+PATCH http://127.0.0.1:3000/products/6795700003c2f4580e8cc68f
+Content-Type: application/json
+
+{
+    "name": "pruebawaza}}}adas4VOYY A BORRRAAAAR",
+    "stock": 1000,
+    "price": 35,
+    "description": "Pulsera de cufasfsafasero bien mamada",
+    "category": "collarsss"
+}
+
+### ELIMINA UN PRODUCTO
+DELETE http://127.0.0.1:3000/products/6795700003c2f4580e8cc68f
