@@ -7,7 +7,7 @@ router.post("/products/create", createProductController);
 router.get("/products", getProductsController);
 router.get("/products/:id", getProductByIdController);
 router.patch("/products/:id", updateProductController);
-router.delete("/products/:id");
+router.delete("/products/:id", deleteProductController);
 
 
 export default router;

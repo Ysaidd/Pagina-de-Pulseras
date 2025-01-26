@@ -1,11 +1,14 @@
 import mongoose, {Schema, Document} from "mongoose";
 
+export type ProductCategory = "anillo" | "pulsera" | "collar" | "zarcillo"
+
 export interface IProduct extends Document{
     name: string,
     stock: number,
     price: number | 0,
     description: string,
-    category: string,
+    category: ProductCategory,
+    descuento: number | 0,
     createAT: Date,
 };
 
@@ -14,7 +17,8 @@ const ProductSchema: Schema = new Schema({
     stock: {type: Number, required: true},
     price: {type: Number, default: 0},
     description: {type: String, required: true},
-    category: {type: String, required: true},
+    category: {type: String, required: true, enum: ["pulsera", "collar", "anillo", "zarcillo"]},
+    descuento: {type: Number, default: 0},
 },{
     timestamps: true,
 })

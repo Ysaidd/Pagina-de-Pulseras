@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { createProduct, getProducts, getProductById, updateProduct, deleteProduct} from "../services/productService"
+import {createProduct, getProducts, getProductById, updateProduct, deleteProduct} from "../services/productService"
 
 export const createProductController = async (req: Request, res: Response) =>{
     try{
-        const {name, stock, price, description, category} = req.body
+        const {name, stock, price, description, category, descuento} = req.body
 
-        const newProduct = await createProduct(name, stock, price, description, category);
+        const newProduct = await createProduct(name, stock, price, description, category, descuento);
         res.status(201).json({
             message: "Producto creado correctamente",
             product: newProduct
@@ -59,7 +59,7 @@ export const deleteProductController = async(req: Request, res: Response) =>{
         const product = await deleteProduct(req.params.id);
 
         res.status(200).json({
-            message: `${product} eliminado correctamente`
+            message: `Producto eliminado correctamente`
         })
     }catch(error){
         const errorMessage = error instanceof Error ? error.message : "Error al eliminar el producto";
