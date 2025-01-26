@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import {createProduct, getProducts, getProductById, updateProduct, deleteProduct} from "../services/productService"
+import {createProduct, getProducts, getProductById, updateProduct, deleteProduct, getProcutsFiltered} from "../services/productService"
 
 export const createProductController = async (req: Request, res: Response) =>{
     try{
-        const {name, stock, price, description, category, descuento} = req.body
+        const {name, stock, price, description, category, descuento } = req.body
 
         const newProduct = await createProduct(name, stock, price, description, category, descuento);
         res.status(201).json({
@@ -64,5 +64,29 @@ export const deleteProductController = async(req: Request, res: Response) =>{
     }catch(error){
         const errorMessage = error instanceof Error ? error.message : "Error al eliminar el producto";
         res.status(500).json({message: errorMessage});
+    }
+}
+
+export const getProductsFilteredControllers = async(req: Request, res: Response) =>{
+    try {
+        const {category, minPrice, maxPrice, keyword, sortBy, order, page, limit} = req.query;
+
+        const filters = {
+            category: category as string,
+            minPrice: minPrice ? parseFloat(minPrice as string) : undefined,
+            maxPrice: maxPrice ? parseFloat(maxPrice as string) : undefined,
+            keyword: keyword as string,
+            sortBy: sortBy as "price" | "createdAt",
+            order: order as "asc" | "desc",
+            page: page ? parseInt(page as string) : 1,
+            limit: limit ? parseInt(limit as string) : 10,
+        };
+
+        const data = await getProcutsFiltered(filters);
+
+        res.status(200).json(data);
+    }catch(error){
+        const errorMessage = error instanceof Error ? error.message : "Error al tirar la query";
+        res.status(400).json({message: errorMessage});
     }
 }

@@ -2,6 +2,17 @@ import mongoose, {Schema, Document} from "mongoose";
 
 export type ProductCategory = "anillo" | "pulsera" | "collar" | "zarcillo"
 
+export interface IProductFilters {
+    category?: string;
+    minPrice?: number;
+    maxPrice?: number;
+    keyword?: string;
+    sortBy?: "price" | "createdAt"; // Campo para ordenar
+    order?: "asc" | "desc"; // Orden (ascendente o descendente)
+    page?: number; // Página actual
+    limit?: number; // Límite de productos por página
+}
+
 export interface IProduct extends Document{
     name: string,
     stock: number,

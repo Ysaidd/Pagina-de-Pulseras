@@ -10,4 +10,6 @@ router.patch("/products/:id", updateProductController);
 router.delete("/products/:id", deleteProductController);
 
 
+
+
 export default router;
