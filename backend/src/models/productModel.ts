@@ -20,6 +20,7 @@ export interface IProduct extends Document{
     description: string,
     category: ProductCategory,
     descuento: number | 0,
+    images: string[];
     createAT: Date,
 };
 
@@ -30,6 +31,7 @@ const ProductSchema: Schema = new Schema({
     description: {type: String, required: true},
     category: {type: String, required: true, enum: ["pulsera", "collar", "anillo", "zarcillo"]},
     descuento: {type: Number, default: 0},
+    images: {type: [String], default: []},
 },{
     timestamps: true,
 })
