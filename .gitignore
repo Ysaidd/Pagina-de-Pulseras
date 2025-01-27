@@ -2,3 +2,4 @@ echo "backend/node_modules/" >> .gitignore
 echo "dist/" >> .gitignore
 echo ".env" >> .gitignore
 echo "frontend" >> .gitignore
+echo "uploads" >> .gitignore

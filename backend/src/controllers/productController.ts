@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import {createProduct, getProducts, getProductById, updateProduct, deleteProduct, getProcutsFiltered} from "../services/productService"
+import {createProduct, getProducts, getProductById, updateProduct, deleteProduct, getProductsFiltered} from "../services/productService"
 
 export const createProductController = async (req: Request, res: Response) =>{
     try{
@@ -82,7 +82,7 @@ export const getProductsFilteredControllers = async(req: Request, res: Response)
             limit: limit ? parseInt(limit as string) : 10,
         };
 
-        const data = await getProcutsFiltered(filters);
+        const data = await getProductsFiltered(filters);
 
         res.status(200).json(data);
     }catch(error){

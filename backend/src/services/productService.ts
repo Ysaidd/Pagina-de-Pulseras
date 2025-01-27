@@ -25,7 +25,7 @@ export const deleteProduct = async (id: string): Promise<IProduct | null> =>{
 }
 
 
-export const getProcutsFiltered = async (filters: IProductFilters): Promise<{
+export const getProductsFiltered = async (filters: IProductFilters): Promise<{
     products: IProduct[],
     total: number,
     currentPage: number,
@@ -62,8 +62,10 @@ export const getProcutsFiltered = async (filters: IProductFilters): Promise<{
     const skip = (page - 1) * limit;
 
     const [products, total] = await Promise.all([
-        Product.find(query).sort(sort).skip(skip).limit(limit).lean(), Product.countDocuments(query),
-    ]) 
+        Product.find(query).sort(sort).skip(skip).limit(limit).lean(),
+        Product.countDocuments(query),
+    ]);
+    
 
     const totalPages = Math.ceil(total / limit);
 
