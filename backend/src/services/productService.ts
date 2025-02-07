@@ -1,8 +1,8 @@
 import Product, { IProduct, IProductFilters } from "../models/productModel";
 
-export const createProduct = async (name: string,price: number,stock:number, description:string,category: string, descuento: number): Promise<IProduct> => {
+export const createProduct = async (name: string,price: number,stock:number, description:string,category: string, descuento: number, images: string[]): Promise<IProduct> => {
 
-    const newProduct = new Product({ name, price, stock, description, category, descuento });
+    const newProduct = new Product({ name, price, stock, description, category, descuento, images });
 
     return await newProduct.save();
 };

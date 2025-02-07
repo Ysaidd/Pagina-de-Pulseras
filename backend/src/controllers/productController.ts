@@ -1,16 +1,23 @@
 import { Request, Response } from "express";
 import {createProduct, getProducts, getProductById, updateProduct, deleteProduct, getProductsFiltered} from "../services/productService"
-import Product, { IProduct } from "../models/productModel";
 
 export const createProductController = async (req: Request, res: Response) =>{
     try{
         const {name, stock, price, description, category, descuento } = req.body
 
-        const newProduct = await createProduct(name, stock, price, description, category, descuento);
+        let images: string[] = [];
+
+        if(req.files && (req.files as Express.Multer.File[]).length){
+            images = (req.files as Express.Multer.File[]).map((file) => `/uploads/${file.filename}`)
+        }
+
+        const newProduct = await createProduct(name, stock, price, description, category, descuento, images);
+        
         res.status(201).json({
             message: "Producto creado correctamente",
             product: newProduct
         })
+
     }catch(error){
         const errorMessage = error instanceof Error ? error.message : "Error al crear el producto";
         res.status(500).json({message: errorMessage});
@@ -89,29 +96,5 @@ export const getProductsFilteredControllers = async(req: Request, res: Response)
     }catch(error){
         const errorMessage = error instanceof Error ? error.message : "Error al tirar la query";
         res.status(400).json({message: errorMessage});
-    }
-}
-
-export const uploadProductImageController = async(req: Request, res: Response) =>{
-    try{
-        const { id } = req.params;
-        const product = await Product.findById(id);
-
-        const uploadedImages = (req.files as Express.Multer.File[]).map((file) => `/uploads/${file.filename}`)
-
-        if (!product) {
-
-            res.status(404).json({ message: "Producto no encontrado" });
-            return undefined
-        }
-
-        product.images.push(...uploadedImages)    
-
-        await product.save();
-
-        res.status(200).json({ message: "Imagenes subidas correctamente", product});
-    }catch(error){
-        const errorMessage = error instanceof Error ? error.message : "Error al subir la img";
-        res.status(500).json({message: errorMessage});
     }
 }
