@@ -12,7 +12,7 @@ POST http://127.0.0.1:3000/products/create
 Content-Type: application/json
 
 {
-    "name": "pruebawazassss105",
+    "name": "pulsera19",
     "stock": 20,
     "price": 35,
     "description": "Pulsera de cuero bien mamada",
@@ -40,3 +40,6 @@ Content-Type: application/json
 
 ### ELIMINA UN PRODUCTO
 DELETE http://127.0.0.1:3000/products/6795700003c2f4580e8cc68f
+
+### Buscar por filtros (NECESITA PRUEBAS CON FORMULARIOS)
+GET http://127.0.0.1:3000/productsa?category=pulsera&sortBy=createdAt&order=asc&page=2&limit=5
