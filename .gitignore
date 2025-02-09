@@ -4,3 +4,4 @@ echo ".env" >> .gitignore
 echo "frontend" >> .gitignore
 echo "uploads" >> .gitignore
 /uploads
+/backend/uploads

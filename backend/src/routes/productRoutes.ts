@@ -1,6 +1,6 @@
 import express, { Router } from "express";
 import { createProductController, getProductsController, getProductByIdController, updateProductController, deleteProductController, getProductsFilteredControllers} from "../controllers/productController";
-import {upload} from "../utils/imageUploader"
+import upload from "../utils/imageUploader"
 
 
 const router = express.Router();
