@@ -70,7 +70,7 @@ export class ProductController {
                 minPrice: minPrice ? parseFloat(minPrice as string) : undefined,
                 maxPrice: maxPrice ? parseFloat(maxPrice as string) : undefined,
                 keyword: keyword as string,
-                sortBy: sortBy as "price" | "createAt",
+                sortBy: sortBy as "price" | "createdAt",
                 order: order as "asc" | "desc",
                 page: page ? parseInt(page as string) : 1,
                 limit: limit ? parseInt(limit as string) : 10,
