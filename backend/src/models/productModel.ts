@@ -1,39 +1,39 @@
-import mongoose, {Schema, Document} from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
-export type ProductCategory = "anillo" | "pulsera" | "collar" | "zarcillo"
+export type ProductCategory = "anillo" | "pulsera" | "collar" | "zarcillo";
 
 export interface IProductFilters {
     category?: string;
     minPrice?: number;
     maxPrice?: number;
     keyword?: string;
-    sortBy?: "price" | "createdAt"; // Campo para ordenar
-    order?: "asc" | "desc"; // Orden (ascendente o descendente)
-    page?: number; // Página actual
-    limit?: number; // Límite de productos por página
+    sortBy?: "price" | "createAt";
+    order?: "asc" | "desc";
+    page?: number;
+    limit?: number;
 }
 
-export interface IProduct extends Document{
-    name: string,
-    stock: number,
-    price: number | 0,
-    description: string,
-    category: ProductCategory,
-    descuento: number | 0,
+export interface IProduct extends Document {
+    name: string;
+    stock: number;
+    price: number;
+    description: string;
+    category: ProductCategory;
+    descuento: number;
     images: string[];
-    createAT: Date,
-};
+    createAT: Date;
+}
 
 const ProductSchema: Schema = new Schema({
-    name: {type: String, required: true},
-    stock: {type: Number, required: true},
-    price: {type: Number, default: 0},
-    description: {type: String, required: true},
-    category: {type: String, required: true, enum: ["pulsera", "collar", "anillo", "zarcillo"]},
-    descuento: {type: Number, default: 0},
-    images: {type: [String], default: []},
-},{
+    name: { type: String, required: true },
+    stock: { type: Number, required: true },
+    price: { type: Number, default: 0 },
+    description: { type: String, required: true },
+    category: { type: String, required: true, enum: ["pulsera", "collar", "anillo", "zarcillo"] },
+    descuento: { type: Number, default: 0 },
+    images: { type: [String], default: [] },
+}, {
     timestamps: true,
-})
+});
 
-export default mongoose.model<IProduct>("Product", ProductSchema); 
+export default mongoose.model<IProduct>("Product", ProductSchema);

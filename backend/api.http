@@ -24,22 +24,22 @@ GET http://127.0.0.1:3000/products
 
 
 ### OBTIENE PRODUCTOS POR ID
-GET http://127.0.0.1:3000/products/6795700003c2f4580e8cc68f
+GET http://127.0.0.1:3000/products/67a817eeddcd5f06c1e41d15
 
 ### ACTUALIZA UN PRODUCTO
-PATCH http://127.0.0.1:3000/products/6795700003c2f4580e8cc68f
+PATCH http://127.0.0.1:3000/products/67a817eeddcd5f06c1e41d15
 Content-Type: application/json
 
 {
-    "name": "pruebawaza}}}adas4VOYY A BORRRAAAAR",
+    "name": "actualizado 5",
     "stock": 1000,
-    "price": 35,
     "description": "Pulsera de cufasfsafasero bien mamada",
-    "category": "collarsss"
+    "category": "collar",
+    "images": ["/uploads/1739069422813-fondo_pantalla.jpg", "/uploads/1739069422813-fondo_pantalla.jpg"]
 }
 
 ### ELIMINA UN PRODUCTO
 DELETE http://127.0.0.1:3000/products/6795700003c2f4580e8cc68f
 
 ### Buscar por filtros (NECESITA PRUEBAS CON FORMULARIOS)
-GET http://127.0.0.1:3000/productsa?category=pulsera&sortBy=createdAt&order=asc&page=2&limit=5
+GET http://127.0.0.1:3000/productsa?category=pulsera&sortBy=createAT&order=asc&page=2&limit=5

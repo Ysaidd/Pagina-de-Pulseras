@@ -2,17 +2,17 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 
-const uploadPath = path.join(__dirname, "..", "..", "uploads"); // Sube un nivel más para evitar guardarlo en "src/uploads"
+const uploadPath = path.join(__dirname, "..", "..", "uploads");
 
 if (!fs.existsSync(uploadPath)) {
     fs.mkdirSync(uploadPath, { recursive: true });
 }
 
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, uploadPath); // Guardamos en "backend/uploads"
+    destination: (req: Express.Request, file: Express.Multer.File, cb: (error: Error | null, destination: string) => void) => {
+        cb(null, uploadPath);
     },
-    filename: (req, file, cb) => {
+    filename: (req: Express.Request, file: Express.Multer.File, cb: (error: Error | null, filename: string) => void) => {
         cb(null, `${Date.now()}-${file.originalname}`);
     },
 });
